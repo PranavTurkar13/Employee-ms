@@ -8,6 +8,7 @@ import { AuthContext } from './context/AuthProvider'
 
 const App = () => {
   const [user, setUser] = useState(null)
+  const [loggedInUserData, setLoggedInUserData] = useState(null)
   const authData = useContext(AuthContext);
   useEffect(() => {
   if(authData){
@@ -21,9 +22,13 @@ const App = () => {
     if(email == 'admin@me.com' && password == 123){
       setUser("admin");
       localStorage.setItem('loggedInUser',JSON.stringify({role:'admin'}));
-    }else if(authData && authData.employees.find((e)=>e.email === email && e.password === password)){
-      setUser("employees");
-      localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}));
+    }else if(authData){
+      const employee = authData.employees.find((e)=>e.email === email && e.password === password);
+      if(employee){
+        setUser("employees");
+        setLoggedInUserData(employee);
+        localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}));
+      }
     }else{
       alert("Invalid Credentials")
     }
@@ -35,7 +40,7 @@ const App = () => {
     <div>
       {!user ? <Login handleLogin={handleLogin} />:''}
       {user === "admin" && <AdminDashboard />}
-      {user === "employees" && <EmployeeDashboard />}
+      {user === "employees" && <EmployeeDashboard data={loggedInUserData}/>}
       {/* <EmployeeDashboard /> */}
       {/* <AdminDashboard /> */}
     </div>

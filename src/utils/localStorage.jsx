@@ -1,6 +1,7 @@
 export const employees = [
   {
     id: 1,
+    name: "Rahul Sharma",
     email: "rahul@company.com",
     password: "123",
     taskCounts: {
@@ -45,6 +46,7 @@ export const employees = [
 
   {
     id: 2,
+    name: "Amit Verma",
     email: "amit@company.com",
     password: "123",
     taskCounts: {
@@ -99,6 +101,7 @@ export const employees = [
 
   {
     id: 3,
+    name: "Sneha Patil",
     email: "sneha@company.com",
     password: "123",
     taskCounts: { active: 1, newtask: 1, completed: 2, failed: 0 },
@@ -138,6 +141,7 @@ export const employees = [
 
   {
     id: 4,
+    name: "Vikas Mehta",
     email: "vikas@company.com",
     password: "123",
     taskCounts: { active: 2, newtask: 0, completed: 1, failed: 1 },
@@ -177,6 +181,7 @@ export const employees = [
 
   {
     id: 5,
+    name: "Neha Kapoor",
     email: "neha@company.com",
     password: "123",
     taskCounts: { active: 1, newtask: 2, completed: 1, failed: 0 },

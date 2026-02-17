@@ -1,6 +1,7 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({data}) => {
+  console.log(data);
   return (
     <div className="flex items-center justify-between 
     bg-gray-900/70 backdrop-blur-md 
@@ -11,7 +12,7 @@ const Header = () => {
         Hello,
         <br />
         <span className="text-3xl font-bold text-white">
-          Pranav 👋
+          {data.name} 👋
         </span>
       </h1>
 
