@@ -1,17 +1,59 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../../context/AuthProvider';
 
 const CreateTask = () => {
+  const [userData,setUserData]=useContext(AuthContext)
+  const [title, setTitle] = useState('');
+  const [date, setDate] = useState('');
+  const [assignTo, setAssignTo] = useState('');
+  const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
+
+  const submitHandler = (e)=>{
+    e.preventDefault();
+    const newTask = {active: true,
+        newtask: false,
+        completed: false,
+        failed: false,
+        tasktitle: title,
+        taskdescription:description,
+        date:date,
+        category:category}
+
+    ;
+    
+    const data = [...userData];
+    data.forEach(function(elem){
+      if(assignTo == elem.name){
+        elem.tasks.push(newTask);
+        elem.taskCounts.newtask +=1;
+      }
+    })
+    console.log(data);
+    
+    setUserData(data);
+    localStorage.setItem("employees", JSON.stringify(data));
+    
+    setTitle('');
+    setDate('');
+    setAssignTo('');
+    setCategory('');
+    setDescription('');
+
+  }
   return (
     <div>
       <div className='bg-gray-900/60 backdrop-blur-md shadow-2xl border border-gray-700 m-10 rounded-2xl p-8'>
         <h2 className="text-3xl font-bold mb-6 text-emerald-400">
           Create New Task
         </h2>
-        <form className='flex flex-col lg:flex-row gap-8'>
+        <form onSubmit={submitHandler} className='flex flex-col lg:flex-row gap-8'>
             <div className='w-1/2 p-5'>
               <div className='p-2'>
                 <h3 className='text-xl text-gray-300'>Task Title</h3>
-                <input className='w-full p-3 rounded-lg 
+                <input value={title} onChange={(e)=>{
+                  setTitle(e.target.value)
+                }} className='w-full p-3 rounded-lg 
                 bg-gray-800 border border-gray-600 
                 placeholder-gray-400 
                 focus:outline-none focus:ring-2 focus:ring-emerald-500 
@@ -19,7 +61,9 @@ const CreateTask = () => {
             </div>
             <div className='p-2'>
                 <h3 className='text-xl text-gray-300'>Date</h3>
-                <input className='w-full p-3 rounded-lg 
+                <input value={date} onChange={(e)=>{
+                  setDate(e.target.value)
+                }} className='w-full p-3 rounded-lg 
               bg-gray-800 border border-gray-600 
               placeholder-gray-400 
               focus:outline-none focus:ring-2 focus:ring-emerald-500 
@@ -27,7 +71,9 @@ const CreateTask = () => {
             </div>
             <div className='p-2'>
                 <h3 className='text-xl text-gray-300'>Assign to</h3>
-                <input className='w-full p-3 rounded-lg 
+                <input value={assignTo} onChange={(e)=>{
+                  setAssignTo(e.target.value)
+                }} className='w-full p-3 rounded-lg 
                 bg-gray-800 border border-gray-600 
                 placeholder-gray-400 
                 focus:outline-none focus:ring-2 focus:ring-emerald-500 
@@ -35,7 +81,9 @@ const CreateTask = () => {
             </div>
             <div className='p-2'>
                 <h3 className='text-xl text-gray-300'>Category</h3>
-                <input className='w-full p-3 rounded-lg 
+                <input value={category} onChange={(e)=>{
+                  setCategory(e.target.value)
+                }} className='w-full p-3 rounded-lg 
               bg-gray-800 border border-gray-600 
               placeholder-gray-400 
               focus:outline-none focus:ring-2 focus:ring-emerald-500 
@@ -44,7 +92,9 @@ const CreateTask = () => {
             </div>
             <div className='w-1/2 p-5'>
                 <label className="block text-sm font-semibold text-gray-400 mb-2">Description</label>
-                <textarea className='border-2 p-2 w-full rounded-lg border-gray-600 bg-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 
+                <textarea value={description} onChange={(e)=>{
+                  setDescription(e.target.value)
+                }} className='border-2 p-2 w-full rounded-lg border-gray-600 bg-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 
                 focus:border-emerald-500 transition duration-200' name="" id=""rows={9} cols={73}></textarea>
                 <button className='w-full mt-4 py-3 rounded-xl 
                 bg-gradient-to-r from-emerald-500 to-teal-500 

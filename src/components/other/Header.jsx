@@ -1,9 +1,10 @@
 import React from "react";
-const Header = ({data}) => {
-  const username = data ? data.name : "Admin";
+const Header = (props) => {
+  const username = props.data ? props.data.name : "Admin";
   const logOutUser = ()=>{
     localStorage.setItem("loggedInUser",'');
-    window.location.reload();
+    props.changeUser('');
+    
   }
   return (
     <div className="flex items-center justify-between 
