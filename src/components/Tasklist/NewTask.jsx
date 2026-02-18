@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NewTask = () => {
+const NewTask = ({data}) => {
   return (
     <div>
       <div className="min-w-[320px] max-w-[350px] shrink-0 
@@ -15,21 +15,20 @@ const NewTask = () => {
           <span className="bg-blue-500/20 text-blue-400 
           border border-blue-500 
           px-3 py-1 text-sm rounded-full font-medium">
-            High
+            {data.category}
           </span>
 
           <span className="text-gray-400 text-sm">
-            20 Feb 2024
+            {data.date}
           </span>
         </div>
 
         <h2 className="text-2xl font-semibold text-white mt-6">
-          Make a YouTube Video
+          {data.tasktitle}
         </h2>
 
         <p className="mt-4 text-gray-400 text-sm leading-relaxed">
-          Create a high-quality UI tutorial video explaining modern dashboard
-          design using Tailwind CSS and React.
+          {data.taskdescription}
         </p>
 
         <button className="mt-6 w-full py-2 rounded-lg 

@@ -14,7 +14,9 @@ const App = () => {
   if(authData){
     const loggedInUser = localStorage.getItem("loggedInUser");
     if(loggedInUser){
-      setUser(loggedInUser.role);
+      const userData = JSON.parse(loggedInUser);
+      setUser(userData.role);
+      setLoggedInUserData(userData.data);
     }
   }
   }, [authData])
@@ -27,7 +29,7 @@ const App = () => {
       if(employee){
         setUser("employees");
         setLoggedInUserData(employee);
-        localStorage.setItem('loggedInUser',JSON.stringify({role:'employee'}));
+        localStorage.setItem('loggedInUser',JSON.stringify({role:'employee',data:{employee}}));
       }
     }else{
       alert("Invalid Credentials")

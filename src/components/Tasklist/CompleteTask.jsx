@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CompleteTask = () => {
+const CompleteTask = ({data}) => {
   return (
     <div>
       <div className="min-w-[320px] max-w-[350px] shrink-0 
@@ -15,20 +15,20 @@ const CompleteTask = () => {
           <span className="bg-emerald-500/20 text-emerald-400 
           border border-emerald-500 
           px-3 py-1 text-sm rounded-full font-medium">
-            Medium
+            {data.category}
           </span>
 
           <span className="text-gray-400 text-sm">
-            21 Feb 2024
+            {data.date}
           </span>
         </div>
 
         <h2 className="text-2xl font-semibold text-white mt-6">
-          Update Landing Page
+          {data.tasktitle}
         </h2>
 
         <p className="mt-4 text-gray-400 text-sm leading-relaxed">
-          Improve hero section UI and add animation using Tailwind and Framer Motion.
+          {data.taskdescription}
         </p>
 
         <button className="mt-6 w-full py-2 rounded-lg 

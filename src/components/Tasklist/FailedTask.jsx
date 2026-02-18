@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FailedTask = () => {
+const FailedTask = ({data}) => {
   return (
     <div>
       <div className="min-w-[320px] max-w-[350px] shrink-0 
@@ -15,20 +15,20 @@ const FailedTask = () => {
     <span className="bg-red-500/20 text-red-400 
     border border-red-500 
     px-3 py-1 text-sm rounded-full font-medium">
-      Critical
+      {data.category}
     </span>
 
     <span className="text-gray-400 text-sm">
-      23 Feb 2024
+      {data.date}
     </span>
   </div>
 
   <h2 className="text-2xl font-semibold text-white mt-6">
-    Fix Authentication Issue
+    {data.tasktitle}
   </h2>
 
   <p className="mt-4 text-gray-400 text-sm leading-relaxed">
-    Resolve login authentication bug causing users to be logged out unexpectedly.
+    {data.taskdescription}
   </p>
 
   <button className="mt-6 w-full py-2 rounded-lg 

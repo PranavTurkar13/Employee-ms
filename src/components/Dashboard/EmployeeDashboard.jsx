@@ -9,7 +9,7 @@ const EmployeeDashboard = ({data}) => {
         <Header data={data} />
         <TaskListNumber />
         <div className='px-10 h-screen'>
-            <TaskList />
+            <TaskList data = {data} />
         </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AcceptTask = () => {
+const AcceptTask = ({data}) => {
   return (
     <div>
       <div className="min-w-[320px] max-w-[350px] shrink-0 
@@ -15,20 +15,20 @@ transition-all duration-300">
     <span className="bg-yellow-500/20 text-yellow-400 
     border border-yellow-500 
     px-3 py-1 text-sm rounded-full font-medium">
-      Low
+      {data.category}
     </span>
 
     <span className="text-gray-400 text-sm">
-      22 Feb 2024
+      {data.date}
     </span>
   </div>
 
   <h2 className="text-2xl font-semibold text-white mt-6">
-    Fix Minor UI Bugs
+    {data.tasktitle}
   </h2>
 
   <p className="mt-4 text-gray-400 text-sm leading-relaxed">
-    Resolve small alignment and spacing issues in the dashboard interface.
+    {data.taskdescription}
   </p>
 
   <button className="mt-6 w-full py-2 rounded-lg 

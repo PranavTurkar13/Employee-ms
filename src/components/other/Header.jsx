@@ -1,7 +1,10 @@
 import React from "react";
-
 const Header = ({data}) => {
-  console.log(data);
+  const username = data ? data.name : "Admin";
+  const logOutUser = ()=>{
+    localStorage.setItem("loggedInUser",'');
+    window.location.reload();
+  }
   return (
     <div className="flex items-center justify-between 
     bg-gray-900/70 backdrop-blur-md 
@@ -12,11 +15,11 @@ const Header = ({data}) => {
         Hello,
         <br />
         <span className="text-3xl font-bold text-white">
-          {data.name} 👋
+          {username} 👋
         </span>
       </h1>
 
-      <button className="px-6 py-2.5 rounded-xl 
+      <button onClick={logOutUser} className="px-6 py-2.5 rounded-xl 
       bg-gradient-to-r from-red-500 to-rose-500 
       hover:from-red-400 hover:to-rose-400 
       transition-all duration-300 
